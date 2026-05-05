@@ -63,26 +63,9 @@
       <div class="hero-visual">
         <div class="hero-circle"></div>
         <div class="hero-plate">🥗</div>
-        <div class="review-card">
-          <div class="review-avatar">
-            <span class="avatar-icon">👨</span>
-            <span class="review-name">Maksym Mizerniy</span>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            Truly amazing fresh food! Love every meal delivered to my door.
-          </p>
-        </div>
-        <div class="review-card">
-          <div class="review-avatar">
-            <span class="avatar-icon">👨</span>
-            <span class="review-name">Arsen Pavliuk</span>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            Healthy and delicious. Best nutrition service I've ever tried!
-          </p>
-        </div>
+
+        <!-- Контейнер для динамічних коментарів -->
+        <div id="heroReviews"></div>
       </div>
     </section>
 
@@ -314,6 +297,48 @@
           <p>Your score: <strong id="finalScore">0</strong></p>
           <button onclick="startGame()">Play Again</button>
         </div>
+      </div>
+    </section>
+
+    <!-- ── LEAVE A REVIEW ── -->
+    <section id="reviews-form-section">
+      <div class="section-header reveal">
+        <p class="section-label">Your Feedback</p>
+        <h2 class="section-title">Leave a <em>Comment</em></h2>
+      </div>
+
+      <div class="review-form-wrapper reveal">
+        <input type="text" id="reviewName" placeholder="Your Name" />
+
+        <div class="avatar-selector">
+          <label>Choose Avatar:</label>
+          <button class="avatar-btn active" data-avatar="👨">👨</button>
+          <button class="avatar-btn" data-avatar="👩">👩</button>
+        </div>
+
+        <textarea
+          id="reviewText"
+          placeholder="Write your review here..."
+        ></textarea>
+
+        <div class="rating-selector">
+          <label>Rating:</label>
+          <div class="stars-input" id="starRating">
+            <span data-val="1">★</span>
+            <span data-val="2">★</span>
+            <span data-val="3">★</span>
+            <span data-val="4">★</span>
+            <span data-val="5">★</span>
+          </div>
+        </div>
+
+        <button
+          id="submitReviewBtn"
+          class="btn-primary"
+          style="width: 100%; justify-content: center"
+        >
+          Submit Review
+        </button>
       </div>
     </section>
 

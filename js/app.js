@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initNavbar();
   initGreeting();
   initHamburger();
+  initReviews();
 
   try {
     const data = await fetchMenuData();
@@ -321,5 +322,134 @@ function initNavbar() {
     navLinks.forEach((a) => {
       a.classList.toggle("active", a.getAttribute("href") === "#" + current);
     });
+  });
+}
+let reviews = JSON.parse(localStorage.getItem("nutriReviews")) || [];
+let currentRating = 5;
+let currentAvatar = "👨";
+
+function initReviews() {
+  const avatarBtns = document.querySelectorAll(".avatar-btn");
+  avatarBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      avatarBtns.forEach((b) => b.classList.remove("active"));
+      e.currentTarget.classList.add("active");
+      currentAvatar = e.currentTarget.dataset.avatar;
+    });
+  });
+
+  const starSpans = document.querySelectorAll("#starRating span");
+
+  starSpans.forEach((span) => {
+    span.addEventListener("mouseover", (e) => {
+      const hoverValue = parseInt(e.target.dataset.val);
+      highlightStars(hoverValue);
+    });
+
+    span.addEventListener("mouseout", () => {
+      highlightStars(currentRating);
+    });
+
+    span.addEventListener("click", (e) => {
+      currentRating = parseInt(e.target.dataset.val);
+      highlightStars(currentRating);
+    });
+  });
+
+  highlightStars(currentRating);
+
+  const submitBtn = document.getElementById("submitReviewBtn");
+  if (submitBtn) {
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const text = document.getElementById("reviewText").value.trim();
+      const nameInput = document.getElementById("reviewName").value.trim();
+      const userName = nameInput ? nameInput : "Guest";
+
+      if (!text) {
+        alert("Please write a comment!");
+        return;
+      }
+
+      addReview({
+        name: userName,
+        text: text,
+        rating: currentRating,
+        avatar: currentAvatar,
+      });
+
+      document.getElementById("reviewText").value = "";
+      document.getElementById("reviewName").value = "";
+      currentRating = 5;
+      highlightStars(currentRating);
+
+      document.getElementById("hero").scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  renderReviews();
+}
+
+function highlightStars(rating) {
+  const starSpans = document.querySelectorAll("#starRating span");
+  starSpans.forEach((span) => {
+    if (parseInt(span.dataset.val) <= rating) {
+      span.style.color = "#f5a623";
+    } else {
+      span.style.color = "#ccc";
+    }
+  });
+}
+
+function addReview(review) {
+  reviews.push(review);
+
+  if (reviews.length > 4) {
+    reviews.shift();
+  }
+
+  localStorage.setItem("nutriReviews", JSON.stringify(reviews));
+
+  renderReviews();
+}
+
+function renderReviews() {
+  const container = document.getElementById("heroReviews");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (reviews.length === 0) {
+    container.innerHTML = `
+      <div class="no-reviews-msg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 24px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-align: center; z-index: 10;">
+        <p style="margin-bottom: 12px; font-weight: 600; color: #2b3a2e;">No comments yet!</p>
+        <a href="#reviews-form-section" class="btn-primary" style="font-size: 0.8rem; padding: 10px 20px; display: inline-block; text-decoration: none;">
+          Be the first! 👇
+        </a>
+      </div>
+    `;
+    return;
+  }
+
+  reviews.forEach((rev, index) => {
+    const card = document.createElement("div");
+
+    const positionClass = `review-pos-${index + 1}`;
+
+    card.className = `review-card ${positionClass}`;
+
+    const starsHtml = "★".repeat(rev.rating) + "☆".repeat(5 - rev.rating);
+
+    card.innerHTML = `
+      <div class="review-avatar">
+        <span class="avatar-icon" style="font-size: 1rem; display: flex; justify-content: center; align-items: center;">${rev.avatar}</span>
+        <span class="review-name">${rev.name}</span>
+      </div>
+      <div class="stars" style="color: #f5a623; margin-bottom: 4px; font-size: 0.8rem;">${starsHtml}</div>
+      <p class="review-text">${rev.text}</p>
+    `;
+    container.appendChild(card);
   });
 }
