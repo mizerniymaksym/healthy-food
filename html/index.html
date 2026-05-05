@@ -11,20 +11,43 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <nav>
-      <a href="#" class="logo">
+    <!-- ── NAVBAR ── -->
+    <nav id="navbar">
+      <a href="#hero" class="logo">
         <span class="logo-icon">🌿</span>
         NutriSite
       </a>
-      <ul class="nav-links">
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#ingredients">About</a></li>
-        <li><a href="#nutritionist">Contact</a></li>
-        <li><a href="#benefits">Reviews</a></li>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#ingredients" class="nav-link">Ingredients</a></li>
+        <li><a href="#benefits" class="nav-link">Benefits</a></li>
+        <li><a href="#nutritionist" class="nav-link">Nutritionist</a></li>
+        <li><a href="#game" class="nav-link">🎮 Game</a></li>
       </ul>
+
+      <div class="nav-user">
+        <input type="text" id="userName" placeholder="Your name..." />
+        <button id="greetBtn">👋 Greet</button>
+      </div>
     </nav>
 
+    <!-- ── GREETING BANNER ── -->
+    <div id="greetBanner" class="greet-banner hidden">
+      <span id="greetText"></span>
+      <button
+        onclick="document.getElementById('greetBanner').classList.add('hidden')"
+      >
+        ×
+      </button>
+    </div>
+
+    <!-- ── HERO ── -->
     <section id="hero">
       <span class="leaf leaf-tl">🍃</span>
       <span class="leaf leaf-bl">🌿</span>
@@ -33,9 +56,9 @@
         <span class="hero-tag">🌱 Fresh &amp; Organic</span>
         <h1 class="hero-title">Eat Healthy And<br /><em>Natural Food</em></h1>
         <p class="hero-desc">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The generated
-          Lorem Ipsum is therefore repetitive.
+          Discover fresh, organic, and nutritionally balanced meals crafted by
+          certified nutritionists. Your path to a healthier lifestyle starts
+          here.
         </p>
         <a href="#menu" class="btn-primary">Discover Food →</a>
       </div>
@@ -43,7 +66,6 @@
       <div class="hero-visual">
         <div class="hero-circle"></div>
         <div class="hero-plate">🥗</div>
-
         <div class="review-card">
           <div class="review-avatar">
             <span class="avatar-icon">👩</span>
@@ -54,7 +76,6 @@
             Truly amazing fresh food! Love every meal delivered to my door.
           </p>
         </div>
-
         <div class="review-card">
           <div class="review-avatar">
             <span class="avatar-icon">👨</span>
@@ -68,67 +89,37 @@
       </div>
     </section>
 
+    <!-- ── SEARCH BAR ── -->
+    <div class="search-section">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search dishes, ingredients, categories..."
+      />
+      <div id="searchResults" class="search-results hidden"></div>
+    </div>
+
+    <!-- ── MENU CATALOG ── -->
     <section id="menu">
-      <div class="menu-inner">
-        <div class="menu-visual reveal">
-          <div class="menu-circle"></div>
-          <div class="menu-plate">🍝</div>
-        </div>
+      <div class="section-header reveal">
+        <p class="section-label">Our Menu</p>
+        <h2 class="section-title">Fresh Healthy <em>Delicious Foods</em></h2>
+        <p class="section-sub">
+          Browse our full catalog of organic meals — filter by category and find
+          your perfect dish.
+        </p>
+      </div>
 
-        <div>
-          <p class="section-label reveal">Our Menu</p>
-          <h2 class="section-title reveal">
-            Fresh Healthy<br /><em>Delicious Foods</em>
-          </h2>
-          <p class="section-sub reveal">
-            We make fresh and healthy food daily — sourced from local organic
-            farms and prepared with care every morning.
-          </p>
+      <!-- Category tabs -->
+      <div class="cat-tabs" id="catTabs"></div>
 
-          <div class="menu-cards">
-            <div class="menu-card reveal">
-              <span class="menu-card-icon">🥗</span>
-              <div class="menu-card-info">
-                <h4>Green Garden Salad</h4>
-                <p>Fresh greens, tomato, cucumber, olive oil</p>
-              </div>
-              <span class="menu-card-cal">185 kcal</span>
-            </div>
-            <div class="menu-card reveal">
-              <span class="menu-card-icon">🌾</span>
-              <div class="menu-card-info">
-                <h4>Quinoa Power Bowl</h4>
-                <p>Quinoa, roasted veggies, tahini dressing</p>
-              </div>
-              <span class="menu-card-cal">320 kcal</span>
-            </div>
-            <div class="menu-card reveal">
-              <span class="menu-card-icon">🥑</span>
-              <div class="menu-card-info">
-                <h4>Avocado Toast Plate</h4>
-                <p>Sourdough, avocado, poached egg, sprouts</p>
-              </div>
-              <span class="menu-card-cal">270 kcal</span>
-            </div>
-            <div class="menu-card reveal">
-              <span class="menu-card-icon">🐟</span>
-              <div class="menu-card-info">
-                <h4>Salmon &amp; Greens</h4>
-                <p>Grilled salmon, steamed broccoli, lemon</p>
-              </div>
-              <span class="menu-card-cal">410 kcal</span>
-            </div>
-          </div>
-
-          <div class="menu-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-        </div>
+      <!-- Cards grid -->
+      <div class="menu-grid" id="menuGrid">
+        <div class="loading-spinner">Loading menu…</div>
       </div>
     </section>
 
+    <!-- ── INGREDIENTS ── -->
     <section id="ingredients">
       <div>
         <p class="section-label reveal">Our Ingredients</p>
@@ -139,7 +130,6 @@
           Select fresh foods with a good ratio — balanced macros and
           micronutrients to fuel your body and support long-term health goals.
         </p>
-
         <div class="ing-list">
           <div class="ing-item reveal">
             <span class="ing-num">01</span>
@@ -183,35 +173,26 @@
           </div>
         </div>
       </div>
-
       <div class="ing-visual reveal">
         <div class="ing-circle"></div>
         <div class="ing-bowl">🥙</div>
-        <div class="badge badge-tl">
-          <span class="badge-icon">🥦</span> Organic
-        </div>
-        <div class="badge badge-tr">
-          <span class="badge-icon">🍎</span> Fresh
-        </div>
-        <div class="badge badge-bl">
-          <span class="badge-icon">🌿</span> Natural
-        </div>
-        <div class="badge badge-br">
-          <span class="badge-icon">💧</span> Pure
-        </div>
+        <div class="badge badge-tl"><span>🥦</span> Organic</div>
+        <div class="badge badge-tr"><span>🍎</span> Fresh</div>
+        <div class="badge badge-bl"><span>🌿</span> Natural</div>
+        <div class="badge badge-br"><span>💧</span> Pure</div>
       </div>
     </section>
 
+    <!-- ── BENEFITS ── -->
     <section id="benefits">
       <div class="benefits-header reveal">
         <p class="section-label">Why Choose Us</p>
         <h2 class="section-title">Benefits of <em>Nutrition</em></h2>
         <p class="section-sub">
-          Ten Healthy Bar Nutrition Vitality — discover how balanced eating
-          transforms your daily energy and wellbeing.
+          Discover how balanced eating transforms your daily energy and
+          wellbeing.
         </p>
       </div>
-
       <div class="benefits-grid">
         <div class="benefits-col">
           <div class="benefit-card reveal">
@@ -234,11 +215,9 @@
             <p>Antioxidant-dense foods that protect cells and slow aging.</p>
           </div>
         </div>
-
         <div class="benefits-center reveal">
           <div class="heart-visual">🫀</div>
         </div>
-
         <div class="benefits-col">
           <div class="benefit-card reveal">
             <div class="benefit-icon">🧠</div>
@@ -265,6 +244,7 @@
       </div>
     </section>
 
+    <!-- ── NUTRITIONIST ── -->
     <section id="nutritionist">
       <div class="nutri-content">
         <p class="section-label reveal">Expert Support</p>
@@ -272,11 +252,9 @@
           Your Personal<br /><em>Nutritionist</em>
         </h2>
         <p class="section-sub reveal">
-          Nutrition is a key area of healthy living. Our certified nutritionists
-          craft personalized plans tailored to your goals, lifestyle, and
-          preferences.
+          Our certified nutritionists craft personalized plans tailored to your
+          goals, lifestyle, and preferences.
         </p>
-
         <ul class="nutri-checklist">
           <li class="reveal">
             <span class="check-icon">✓</span> Personalized weekly meal plans
@@ -296,10 +274,8 @@
             <span class="check-icon">✓</span> Progress reviews every two weeks
           </li>
         </ul>
-
         <a href="#" class="btn-primary">Get Started →</a>
       </div>
-
       <div class="nutri-visual reveal">
         <div class="nutri-circle"></div>
         <div class="nutri-bowl">🥘</div>
@@ -320,22 +296,96 @@
       </div>
     </section>
 
-    <footer>
-      <ul class="footer-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#ingredients">About</a></li>
-        <li><a href="#nutritionist">Contact</a></li>
-        <li><a href="#benefits">Reviews</a></li>
-      </ul>
-      <div class="footer-socials">
-        <a href="#" class="social-btn" title="Facebook">📘</a>
-        <a href="#" class="social-btn" title="Instagram">📸</a>
-        <a href="#" class="social-btn" title="Twitter">🐦</a>
+    <!-- ── ARCADE GAME ── -->
+    <section id="game">
+      <div class="section-header reveal">
+        <p class="section-label">Mini Game</p>
+        <h2 class="section-title">🎮 Catch the <em>Healthy Food!</em></h2>
+        <p class="section-sub">
+          Catch falling healthy food — avoid junk! Use ← → arrow keys or tap the
+          buttons on mobile.
+        </p>
       </div>
-      <p class="footer-copy">© 2024 NutriSite. All rights reserved.</p>
+      <div class="game-wrapper reveal">
+        <div class="game-hud">
+          <span>Score: <strong id="gameScore">0</strong></span>
+          <span>Lives: <strong id="gameLives">❤️❤️❤️</strong></span>
+          <span>Level: <strong id="gameLevel">1</strong></span>
+        </div>
+        <canvas id="gameCanvas" width="600" height="380"></canvas>
+        <div class="game-controls">
+          <button class="game-btn" id="btnLeft">◀</button>
+          <button class="game-btn" id="btnStart" onclick="startGame()">
+            ▶ Start
+          </button>
+          <button class="game-btn" id="btnRight">▶</button>
+        </div>
+        <div id="gameOver" class="game-over hidden">
+          <h3>Game Over!</h3>
+          <p>Your score: <strong id="finalScore">0</strong></p>
+          <button onclick="startGame()">Play Again</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 12px">
+            <span class="logo-icon">🌿</span> NutriSite
+          </div>
+          <p class="footer-about">
+            A team web project on healthy nutrition, built with vanilla HTML,
+            CSS &amp; JavaScript.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#ingredients">Ingredients</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#game">Game</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul class="footer-team">
+            <li>👤 Developer 1 — Maksym Mizerniy</li>
+            <li>👤 Developer 2 — Arsen Pavliuk</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Stay in Touch</h4>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" title="Facebook">📘</a>
+            <a href="#" class="social-btn" title="Instagram">📸</a>
+            <a href="#" class="social-btn" title="Twitter">🐦</a>
+          </div>
+          <div class="footer-greet">
+            <input type="text" id="footerName" placeholder="Your name..." />
+            <button id="footerGreetBtn">Greet me!</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 NutriSite Team. All rights reserved.</p>
+      </div>
     </footer>
 
+    <!-- ── MODAL for dish detail ── -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeModal()"></div>
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
     <script src="/js/app.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/game.js"></script>
   </body>
 </html>
