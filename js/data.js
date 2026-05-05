@@ -92,7 +92,7 @@ const MENU_DATA = {
           name: "Farro & Roasted Veggie Bowl",
           description:
             "Farro grain, roasted bell peppers, zucchini, cherry tomatoes, pesto.",
-          image: "🫑",
+          image: "images/farro-veggie-bowl.jpg",
           calories: 360,
           protein: "13g",
           fat: "11g",
@@ -104,7 +104,7 @@ const MENU_DATA = {
           name: "Acai Energy Bowl",
           description:
             "Acai base, banana, granola, blueberries, honey drizzle.",
-          image: "🫐",
+          image: "images/acai-energy-bowl.jpg",
           calories: 340,
           protein: "9g",
           fat: "8g",
@@ -124,7 +124,7 @@ const MENU_DATA = {
           name: "Grilled Chicken & Greens",
           description:
             "Herb-marinated chicken breast, steamed broccoli, quinoa, lemon sauce.",
-          image: "🍗",
+          image: "images/grilled-chicken-greens.jpg",
           calories: 480,
           protein: "42g",
           fat: "14g",
@@ -136,7 +136,7 @@ const MENU_DATA = {
           name: "Salmon & Asparagus",
           description:
             "Atlantic salmon fillet, roasted asparagus, brown rice, dill butter.",
-          image: "🐟",
+          image: "images/salmon-asparagus.jpg",
           calories: 520,
           protein: "38g",
           fat: "22g",
@@ -148,7 +148,7 @@ const MENU_DATA = {
           name: "Turkey & Veggie Stir-Fry",
           description:
             "Ground turkey, mixed vegetables, ginger-soy sauce, brown rice.",
-          image: "🥢",
+          image: "images/turkey-veggie.jpg",
           calories: 440,
           protein: "35g",
           fat: "12g",
@@ -160,7 +160,7 @@ const MENU_DATA = {
           name: "Lentil & Egg Plate",
           description:
             "Spiced lentils, poached eggs, wilted spinach, whole-grain toast.",
-          image: "🥚",
+          image: "images/lentil-egg.jpg",
           calories: 410,
           protein: "28g",
           fat: "10g",
@@ -180,7 +180,7 @@ const MENU_DATA = {
           name: "Lentil Detox Soup",
           description:
             "Red lentils, turmeric, ginger, coconut milk, coriander.",
-          image: "🍲",
+          image: "images/lentil-soup.jpg",
           calories: 280,
           protein: "16g",
           fat: "8g",
@@ -192,7 +192,7 @@ const MENU_DATA = {
           name: "Miso Ramen Bowl",
           description:
             "Miso broth, ramen noodles, soft egg, mushrooms, nori, scallions.",
-          image: "🍜",
+          image: "images/miso-ramen.jpg",
           calories: 350,
           protein: "18g",
           fat: "9g",
@@ -204,7 +204,7 @@ const MENU_DATA = {
           name: "Pumpkin Cream Soup",
           description:
             "Roasted pumpkin, cream, nutmeg, pumpkin seeds, croutons.",
-          image: "🎃",
+          image: "images/cream-soup.jpg",
           calories: 240,
           protein: "6g",
           fat: "10g",
@@ -216,7 +216,7 @@ const MENU_DATA = {
           name: "Chicken & Vegetable Stew",
           description:
             "Free-range chicken, root vegetables, herbs, rich broth.",
-          image: "🥕",
+          image: "images/chicken-stew.jpg",
           calories: 380,
           protein: "30g",
           fat: "10g",
@@ -236,7 +236,7 @@ const MENU_DATA = {
           name: "Green Detox Smoothie",
           description:
             "Spinach, cucumber, green apple, lemon, ginger, coconut water.",
-          image: "🥒",
+          image: "images/green-smoothie.jpg",
           calories: 140,
           protein: "4g",
           fat: "1g",
