@@ -248,7 +248,7 @@ const MENU_DATA = {
           name: "Berry Blast",
           description:
             "Mixed berries, banana, oat milk, chia seeds, maple syrup.",
-          image: "🍇",
+          image: "images/berry-blast.jpg",
           calories: 210,
           protein: "6g",
           fat: "3g",
@@ -260,7 +260,7 @@ const MENU_DATA = {
           name: "Tropical Sunrise",
           description:
             "Mango, pineapple, passion fruit, coconut milk, turmeric.",
-          image: "🥭",
+          image: "images/tropical-sunrise.jpg",
           calories: 190,
           protein: "3g",
           fat: "4g",
@@ -272,7 +272,7 @@ const MENU_DATA = {
           name: "Protein Peanut Shake",
           description:
             "Banana, peanut butter, oat milk, vanilla protein powder, cacao.",
-          image: "🥜",
+          image: "images/peanut-shake.jpg",
           calories: 320,
           protein: "22g",
           fat: "10g",
@@ -292,7 +292,7 @@ const MENU_DATA = {
           name: "Chia Pudding",
           description:
             "Chia seeds in almond milk, topped with fresh mango and coconut flakes.",
-          image: "🌴",
+          image: "images/chia-pudding.jpg",
           calories: 220,
           protein: "7g",
           fat: "9g",
@@ -304,7 +304,7 @@ const MENU_DATA = {
           name: "Avocado Chocolate Mousse",
           description:
             "Ripe avocado, raw cacao, maple syrup, vanilla — silky and rich.",
-          image: "🥑",
+          image: "images/avocado-mousse.jpg",
           calories: 280,
           protein: "4g",
           fat: "18g",
@@ -315,7 +315,7 @@ const MENU_DATA = {
           id: "d3",
           name: "Banana Nice Cream",
           description: "Frozen banana blended with almond butter and cinnamon.",
-          image: "🍌",
+          image: "images/banana-nice-cream.jpg",
           calories: 195,
           protein: "4g",
           fat: "6g",
@@ -327,7 +327,7 @@ const MENU_DATA = {
           name: "Oat Energy Balls",
           description:
             "Rolled oats, dates, dark chocolate chips, coconut, hemp seeds.",
-          image: "⚽",
+          image: "images/energy-balls.jpg",
           calories: 160,
           protein: "5g",
           fat: "7g",
