@@ -24,7 +24,7 @@ const MENU_DATA = {
           name: "Caesar Salad",
           description:
             "Romaine lettuce, parmesan, croutons, classic Caesar dressing.",
-          image: "🫒",
+          image: "images/caesar-salad.jpg",
           calories: 310,
           protein: "14g",
           fat: "18g",
@@ -36,7 +36,7 @@ const MENU_DATA = {
           name: "Greek Salad",
           description:
             "Tomatoes, olives, feta cheese, red onion, oregano, olive oil.",
-          image: "🧀",
+          image: "images/greek-salad.jpg",
           calories: 220,
           protein: "8g",
           fat: "14g",
@@ -48,7 +48,7 @@ const MENU_DATA = {
           name: "Spinach & Strawberry",
           description:
             "Baby spinach, fresh strawberries, walnuts, balsamic vinaigrette.",
-          image: "🍓",
+          image: "images/spinach-strawberry.jpg",
           calories: 195,
           protein: "5g",
           fat: "10g",
@@ -68,7 +68,7 @@ const MENU_DATA = {
           name: "Quinoa Power Bowl",
           description:
             "Quinoa, roasted sweet potato, chickpeas, tahini dressing, pomegranate.",
-          image: "🌾",
+          image: "images/quinoa-power-bowl.jpg",
           calories: 420,
           protein: "18g",
           fat: "12g",
@@ -80,7 +80,7 @@ const MENU_DATA = {
           name: "Brown Rice Buddha Bowl",
           description:
             "Brown rice, edamame, shredded carrots, avocado, miso dressing.",
-          image: "🍚",
+          image: "images/rice-bowl.jpg",
           calories: 390,
           protein: "15g",
           fat: "14g",
