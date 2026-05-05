@@ -26,10 +26,10 @@ const MENU_DATA = {
             "Romaine lettuce, parmesan, croutons, classic Caesar dressing.",
           image: "images/caesar-salad.jpg",
           calories: 310,
-          protein: "14g",
+          protein: "30g",
           fat: "18g",
           price: "$10.99",
-          tags: ["vegetarian"],
+          tags: ["high-protein"],
         },
         {
           id: "s3",
