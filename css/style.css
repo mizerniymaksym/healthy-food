@@ -62,14 +62,24 @@ body {
 }
 
 .logo-icon {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--green-pale);
+/* Залишаємо світлий фон, якщо лого прозоре */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  overflow: hidden; /* Критично: все, що вилазить за коло, буде обрізане */
+  
+  /* Прибираємо старі налаштування для тексту, вони більше не потрібні */
+  font-size: 0; 
+  color: transparent;
+}
+
+.logo-icon img {
+  width: 100%;       /* Картинка розтягнеться на всю ширину кола (30px) */
+  height: 100%;      /* Картинка розтягнеться на всю висоту кола (30px) */
+  object-fit: cover; /* Ключовий рядок: картинка акуратно впишеться, не розтягуючись */
 }
 
 .nav-links {
@@ -530,6 +540,10 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
+  
+  display: flex;          /* Додано */
+  flex-direction: column; /* Додано */
+  height: 100%;           /* Додано: щоб всі картки в ряду мали одну висоту */
 }
 
 .dish-card:hover {
@@ -560,6 +574,9 @@ body {
 
 .dish-info {
   padding: 18px;
+  display: flex;          /* Додано */
+  flex-direction: column; /* Додано */
+  flex-grow: 1;           /* Додано: змушує блок займати весь вільний простір */
 }
 .dish-cat {
   font-size: 0.7rem;
@@ -596,6 +613,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin-top: auto; /* Додано: виштовхує теги до низу */
+  padding-top: 12px; /* Додано: мінімальний відступ від тексту вище */
 }
 .tag {
   padding: 3px 9px;
