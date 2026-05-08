@@ -85,6 +85,7 @@ function filterByCategory(catId, clickedBtn) {
 }
 
 // ── Render cards ──
+// ── Render cards ──
 function renderItems(items) {
   const grid = document.getElementById("menuGrid");
   if (!items.length) {
@@ -93,6 +94,7 @@ function renderItems(items) {
     return;
   }
 
+  // Звичайні картки, які відкривають модалку при кліку
   grid.innerHTML = items
     .map(
       (item) => `
@@ -200,36 +202,67 @@ function openModal(itemId) {
   const item = allItems.find((i) => i.id === itemId);
   if (!item) return;
 
+  const recipeText =
+    item.recipe ||
+    "Mix fresh ingredients, season with herbs and olive oil, and enjoy a healthy meal!";
+
   document.getElementById("modalContent").innerHTML = `
-       <div class="modal-icon${
-         isImagePath(item.image) ? " modal-icon--photo" : ""
-       }">
-         ${
-           isImagePath(item.image)
-             ? `<img src="${item.image}" alt="${item.name}">`
-             : item.image
-         }
-       </div>
-       <div class="modal-cat">${item.categoryName}</div>
-       <h2 class="modal-title">${item.name}</h2>
-       <p class="modal-desc">${item.description}</p>
-       <div class="modal-macros">
-         <div class="macro"><span class="macro-val">🔥 ${
-           item.calories
-         }</span><span class="macro-lbl">Calories</span></div>
-         <div class="macro"><span class="macro-val">💪 ${
-           item.protein
-         }</span><span class="macro-lbl">Protein</span></div>
-         <div class="macro"><span class="macro-val">🥑 ${
-           item.fat
-         }</span><span class="macro-lbl">Fat</span></div>
-       </div>
-       <div class="dish-tags" style="margin-bottom:20px;">
-         ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
-       </div>
-       <div class="modal-price">${item.price}</div>
-       <button class="btn-primary" onclick="closeModal()">Order Now →</button>
-     `;
+    <div class="modal-flip-container" onclick="this.classList.toggle('flipped')">
+      <div class="modal-flip-inner">
+        
+        <div class="modal-front">
+           <div class="modal-icon${
+             isImagePath(item.image) ? " modal-icon--photo" : ""
+           }">
+             ${
+               isImagePath(item.image)
+                 ? `<img src="${item.image}" alt="${item.name}">`
+                 : item.image
+             }
+           </div>
+           <div class="modal-cat">${item.categoryName}</div>
+           <h2 class="modal-title">${item.name}</h2>
+           <p class="modal-desc">${item.description}</p>
+           <div class="modal-macros">
+             <div class="macro"><span class="macro-val">🔥 ${
+               item.calories
+             }</span><span class="macro-lbl">Calories</span></div>
+             <div class="macro"><span class="macro-val">💪 ${
+               item.protein
+             }</span><span class="macro-lbl">Protein</span></div>
+             <div class="macro"><span class="macro-val">🥑 ${
+               item.fat
+             }</span><span class="macro-lbl">Fat</span></div>
+           </div>
+           <div class="dish-tags" style="margin-bottom:20px; justify-content: center;">
+             ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+           </div>
+           <div class="modal-price">${item.price}</div>
+           
+           <div style="text-align: center;">
+             <button class="btn-primary" onclick="event.stopPropagation(); closeModal()">Order Now →</button>
+           </div>
+           <div class="flip-hint">↺ Click anywhere to see the recipe</div>
+        </div>
+
+        <div class="modal-back">
+           <div class="modal-icon" style="font-size: 3rem; margin-bottom: 0;">👨‍🍳</div>
+           <div class="modal-cat">Recipe</div>
+           <h2 class="modal-title" style="margin-bottom: 20px;">${
+             item.name
+           }</h2>
+           
+           <p class="modal-desc" style="font-size: 1rem; padding: 0 15px;">${recipeText}</p>
+           
+           <div style="text-align: center; margin-top: 30px;">
+             <button class="btn-primary" style="background: var(--green-pale); color: var(--green-primary);" onclick="event.stopPropagation(); closeModal()">Close</button>
+           </div>
+           <div class="flip-hint">↺ Click anywhere to flip back</div>
+        </div>
+
+      </div>
+    </div>
+  `;
   document.getElementById("modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
