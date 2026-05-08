@@ -1,7 +1,3 @@
-/* =============================================
-   NutriSite — style.css
-   ============================================= */
-
 :root {
   --green-primary: #4a7c59;
   --green-light: #7ab648;
@@ -33,7 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NAVBAR ── */
 #navbar {
   position: fixed;
   top: 0;
@@ -65,21 +60,19 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  /* Залишаємо світлий фон, якщо лого прозоре */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Критично: все, що вилазить за коло, буде обрізане */
+  overflow: hidden;
 
-  /* Прибираємо старі налаштування для тексту, вони більше не потрібні */
   font-size: 0;
   color: transparent;
 }
 
 .logo-icon img {
-  width: 100%; /* Картинка розтягнеться на всю ширину кола (30px) */
-  height: 100%; /* Картинка розтягнеться на всю висоту кола (30px) */
-  object-fit: cover; /* Ключовий рядок: картинка акуратно впишеться, не розтягуючись */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nav-links {
@@ -152,7 +145,6 @@ body {
   background: #d0e8c0;
 }
 
-/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -183,7 +175,6 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── GREETING BANNER ── */
 .greet-banner {
   position: fixed;
   top: 68px;
@@ -223,7 +214,6 @@ body {
   }
 }
 
-/* ── HERO ── */
 #hero {
   min-height: 100vh;
   padding: 72px 60px 0;
@@ -415,7 +405,6 @@ body {
   color: var(--text-light);
 }
 
-/* ── SEARCH ── */
 .search-section {
   position: relative;
   max-width: 680px;
@@ -495,7 +484,6 @@ body {
   border-radius: 8px;
 }
 
-/* ── CATALOG ── */
 #menu {
   background: linear-gradient(160deg, #ebf5e3 0%, #f4faf0 100%);
 }
@@ -541,9 +529,9 @@ body {
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
 
-  display: flex; /* Додано */
-  flex-direction: column; /* Додано */
-  height: 100%; /* Додано: щоб всі картки в ряду мали одну висоту */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .dish-card:hover {
@@ -574,9 +562,9 @@ body {
 
 .dish-info {
   padding: 18px;
-  display: flex; /* Додано */
-  flex-direction: column; /* Додано */
-  flex-grow: 1; /* Додано: змушує блок займати весь вільний простір */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .dish-cat {
   font-size: 0.7rem;
@@ -613,8 +601,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-top: auto; /* Додано: виштовхує теги до низу */
-  padding-top: 12px; /* Додано: мінімальний відступ від тексту вище */
+  margin-top: auto;
+  padding-top: 12px;
 }
 .tag {
   padding: 3px 9px;
@@ -625,7 +613,6 @@ body {
   font-weight: 500;
 }
 
-/* ── SECTION COMMONS ── */
 section {
   padding: 90px 60px;
 }
@@ -660,7 +647,6 @@ section {
   margin: 0 auto;
 }
 
-/* ── INGREDIENTS ── */
 #ingredients {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -770,7 +756,6 @@ section {
   right: -5px;
 }
 
-/* ── BENEFITS ── */
 #benefits {
   background: linear-gradient(160deg, #ebf5e3 0%, #f4faf0 100%);
   text-align: center;
@@ -845,7 +830,6 @@ section {
   }
 }
 
-/* ── NUTRITIONIST ── */
 #nutritionist {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -936,7 +920,6 @@ section {
   margin-top: 2px;
 }
 
-/* ── GAME ── */
 #game {
   background: linear-gradient(160deg, #ebf5e3 0%, #f4faf0 100%);
 }
@@ -1020,7 +1003,6 @@ section {
   display: none;
 }
 
-/* ── MODAL ── */
 .modal {
   position: fixed;
   inset: 0;
@@ -1134,7 +1116,6 @@ section {
   margin-bottom: 20px;
 }
 
-/* ── FOOTER ── */
 footer {
   background: var(--green-pale);
   border-top: 1px solid rgba(74, 124, 89, 0.12);
@@ -1230,7 +1211,6 @@ footer {
   color: var(--text-light);
 }
 
-/* ── SCROLL REVEAL ── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -1240,10 +1220,6 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ─────────────────────────────────────────────
-       RESPONSIVE BREAKPOINTS
-    ───────────────────────────────────────────── */
 
 @media (max-width: 1199px) {
   #navbar,
@@ -1424,7 +1400,6 @@ footer {
     font-size: 1.6rem;
   }
 }
-/* ── REVIEW FORM UPDATES ── */
 #reviewName {
   width: 100%;
   padding: 14px 16px;
@@ -1508,9 +1483,7 @@ footer {
 .stars-input span:hover {
   transform: scale(1.15);
 }
-/* --- ПОЗИЦІЇ ДЛЯ 4 КОМЕНТАРІВ НАВКОЛО КРУГА --- */
 
-/* 1-й (найстаріший) — знизу зліва */
 .review-pos-1 {
   bottom: 60px !important;
   left: -10px !important;
@@ -1519,7 +1492,6 @@ footer {
   animation: floatY 4s ease-in-out infinite !important;
 }
 
-/* 2-й — знизу справа */
 .review-pos-2 {
   bottom: 100px !important;
   right: -20px !important;
@@ -1529,7 +1501,6 @@ footer {
   animation-delay: 0.5s !important;
 }
 
-/* 3-й — зверху справа */
 .review-pos-3 {
   top: 60px !important;
   right: -10px !important;
@@ -1539,7 +1510,6 @@ footer {
   animation-delay: 1s !important;
 }
 
-/* 4-й (найновіший) — зверху зліва */
 .review-pos-4 {
   top: 40px !important;
   left: 0px !important;
@@ -1548,7 +1518,6 @@ footer {
   animation: floatY 4.2s ease-in-out infinite alternate !important;
   animation-delay: 1.5s !important;
 }
-/* ── FLIP-ЕФЕКТ ДЛЯ МОДАЛЬНОГО ВІКНА ── */
 .modal-flip-container {
   perspective: 1000px;
   width: 100%;
@@ -1562,7 +1531,6 @@ footer {
   transform-style: preserve-3d;
 }
 
-/* Клас flipped перевертає контейнер */
 .modal-flip-container.flipped .modal-flip-inner {
   transform: rotateY(180deg);
 }
@@ -1570,23 +1538,21 @@ footer {
 .modal-front,
 .modal-back {
   width: 100%;
-  backface-visibility: hidden; /* Ховає задню сторону */
+  backface-visibility: hidden;
 }
 
-/* Передня сторона (звичайна інформація) */
 .modal-front {
   position: relative;
   z-index: 2;
 }
 
-/* Задня сторона (рецепт) */
 .modal-back {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  transform: rotateY(180deg); /* Початково розвернута на 180 градусів */
+  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;

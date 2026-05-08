@@ -1,23 +1,14 @@
-/* =============================================
-   NutriSite — app.js
-   Catalog rendering, search, greeting, modal
-   ============================================= */
-
 "use strict";
 
-// ── Simulated AJAX fetch (replace URL with real server in production) ──
 function fetchMenuData() {
   return new Promise((resolve) => {
-    // Simulates network latency as if loading from server
     setTimeout(() => resolve(MENU_DATA), 400);
   });
 }
 
-// ── State ──
 let allItems = [];
 let activeCategory = "all";
 
-// ── Init ──
 document.addEventListener("DOMContentLoaded", async () => {
   initScrollReveal();
   initNavbar();
@@ -34,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// ── Build full catalog from JSON ──
 function buildCatalog(data) {
   allItems = data.categories.flatMap((cat) =>
     cat.items.map((item) => ({
@@ -49,7 +39,6 @@ function buildCatalog(data) {
   initSearch();
 }
 
-// ── Category tabs ──
 function buildCategoryTabs(categories) {
   const tabs = document.getElementById("catTabs");
   tabs.innerHTML = "";
@@ -84,8 +73,6 @@ function filterByCategory(catId, clickedBtn) {
   renderItems(filtered);
 }
 
-// ── Render cards ──
-// ── Render cards ──
 function renderItems(items) {
   const grid = document.getElementById("menuGrid");
   if (!items.length) {
@@ -94,7 +81,6 @@ function renderItems(items) {
     return;
   }
 
-  // Звичайні картки, які відкривають модалку при кліку
   grid.innerHTML = items
     .map(
       (item) => `
@@ -112,11 +98,14 @@ function renderItems(items) {
            <div class="dish-cat">${item.categoryName}</div>
            <h3 class="dish-name">${item.name}</h3>
            <p class="dish-desc">${item.description}</p>
-           <div class="dish-meta">
-             <span class="dish-cal">🔥 ${item.calories} kcal</span>
-             <span class="dish-price">${item.price}</span>
+           
+           <div class="dish-meta" style="justify-content: center; margin-bottom: 15px;">
+             <span class="dish-cal" style="font-weight: 600; color: var(--green-primary); font-size: 0.9rem;">🔥 ${
+               item.calories
+             } kcal</span>
            </div>
-           <div class="dish-tags">
+           
+           <div class="dish-tags" style="justify-content: center;">
              ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
            </div>
          </div>
@@ -126,7 +115,6 @@ function renderItems(items) {
     .join("");
 }
 
-// ── Search ──
 function initSearch() {
   const input = document.getElementById("searchInput");
   const resultsBox = document.getElementById("searchResults");
@@ -151,10 +139,8 @@ function initSearch() {
         item.categoryName.toLowerCase().includes(query)
     );
 
-    // Inline highlight in grid
     renderItems(matches);
 
-    // Dropdown suggestion
     if (matches.length && query.length >= 2) {
       resultsBox.innerHTML = matches
         .slice(0, 5)
@@ -169,7 +155,9 @@ function initSearch() {
              <span><strong>${item.name}</strong> <small>${
               item.categoryName
             }</small></span>
-             <span class="search-price">${item.price}</span>
+             <span class="search-price" style="color: var(--text-mid);">🔥 ${
+               item.calories
+             } kcal</span>
            </div>`
         )
         .join("");
@@ -186,7 +174,6 @@ function initSearch() {
   });
 }
 
-// ── Helper: check if image field is a file path ──
 function isImagePath(src) {
   return (
     src &&
@@ -197,7 +184,6 @@ function isImagePath(src) {
   );
 }
 
-// ── Modal ──
 function openModal(itemId) {
   const item = allItems.find((i) => i.id === itemId);
   if (!item) return;
@@ -223,6 +209,7 @@ function openModal(itemId) {
            <div class="modal-cat">${item.categoryName}</div>
            <h2 class="modal-title">${item.name}</h2>
            <p class="modal-desc">${item.description}</p>
+           
            <div class="modal-macros">
              <div class="macro"><span class="macro-val">🔥 ${
                item.calories
@@ -234,15 +221,17 @@ function openModal(itemId) {
                item.fat
              }</span><span class="macro-lbl">Fat</span></div>
            </div>
-           <div class="dish-tags" style="margin-bottom:20px; justify-content: center;">
+           
+           <div class="dish-tags" style="margin-bottom:25px; justify-content: center;">
              ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
            </div>
-           <div class="modal-price">${item.price}</div>
            
            <div style="text-align: center;">
-             <button class="btn-primary" onclick="event.stopPropagation(); closeModal()">Order Now →</button>
+             <button class="btn-primary" onclick="event.stopPropagation(); this.closest('.modal-flip-container').classList.toggle('flipped')">
+               📖 Read Recipe
+             </button>
            </div>
-           <div class="flip-hint">↺ Click anywhere to see the recipe</div>
+           <div class="flip-hint">or click anywhere to flip</div>
         </div>
 
         <div class="modal-back">
@@ -255,9 +244,10 @@ function openModal(itemId) {
            <p class="modal-desc" style="font-size: 1rem; padding: 0 15px;">${recipeText}</p>
            
            <div style="text-align: center; margin-top: 30px;">
-             <button class="btn-primary" style="background: var(--green-pale); color: var(--green-primary);" onclick="event.stopPropagation(); closeModal()">Close</button>
+             <button class="btn-primary" style="background: var(--green-pale); color: var(--green-primary);" onclick="event.stopPropagation(); this.closest('.modal-flip-container').classList.toggle('flipped')">
+               ← Back to Details
+             </button>
            </div>
-           <div class="flip-hint">↺ Click anywhere to flip back</div>
         </div>
 
       </div>
@@ -272,7 +262,6 @@ function closeModal() {
   document.body.style.overflow = "";
 }
 
-// ── Greeting ──
 function initGreeting() {
   function greet(inputId) {
     const name = document.getElementById(inputId).value.trim();
@@ -305,7 +294,6 @@ function initGreeting() {
   });
 }
 
-// ── Hamburger ──
 function initHamburger() {
   const btn = document.getElementById("hamburger");
   const links = document.getElementById("nav-links");
@@ -313,7 +301,6 @@ function initHamburger() {
     links.classList.toggle("open");
     btn.classList.toggle("active");
   });
-  // close on link click
   links.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => {
       links.classList.remove("open");
@@ -322,7 +309,6 @@ function initHamburger() {
   );
 }
 
-// ── Scroll Reveal ──
 function initScrollReveal() {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -337,13 +323,11 @@ function initScrollReveal() {
   );
 
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-  // Hero visible immediately
   document
     .querySelectorAll("#hero .reveal")
     .forEach((el) => el.classList.add("visible"));
 }
 
-// ── Navbar active link on scroll ──
 function initNavbar() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -373,7 +357,6 @@ function initReviews() {
   });
 
   const starSpans = document.querySelectorAll("#starRating span");
-
   starSpans.forEach((span) => {
     span.addEventListener("mouseover", (e) => {
       const hoverValue = parseInt(e.target.dataset.val);

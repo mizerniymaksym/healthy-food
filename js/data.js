@@ -1,4 +1,3 @@
-// Simulated server JSON data (in real project load via fetch('data.json'))
 const MENU_DATA = {
   categories: [
     {
@@ -18,7 +17,6 @@ const MENU_DATA = {
           calories: 185,
           protein: "6g",
           fat: "9g",
-          price: "$8.99",
           tags: ["vegan", "gluten-free"],
         },
         {
@@ -32,7 +30,6 @@ const MENU_DATA = {
           calories: 310,
           protein: "30g",
           fat: "18g",
-          price: "$10.99",
           tags: ["high-protein"],
         },
         {
@@ -46,7 +43,6 @@ const MENU_DATA = {
           calories: 220,
           protein: "8g",
           fat: "14g",
-          price: "$9.99",
           tags: ["vegetarian", "gluten-free"],
         },
         {
@@ -60,7 +56,6 @@ const MENU_DATA = {
           calories: 195,
           protein: "5g",
           fat: "10g",
-          price: "$9.49",
           tags: ["vegan", "gluten-free"],
         },
       ],
@@ -82,7 +77,6 @@ const MENU_DATA = {
           calories: 420,
           protein: "18g",
           fat: "12g",
-          price: "$12.99",
           tags: ["vegan", "high-protein"],
         },
         {
@@ -96,7 +90,6 @@ const MENU_DATA = {
           calories: 390,
           protein: "15g",
           fat: "14g",
-          price: "$11.99",
           tags: ["vegan"],
         },
         {
@@ -110,7 +103,6 @@ const MENU_DATA = {
           calories: 360,
           protein: "13g",
           fat: "11g",
-          price: "$11.49",
           tags: ["vegetarian"],
         },
         {
@@ -124,7 +116,6 @@ const MENU_DATA = {
           calories: 340,
           protein: "9g",
           fat: "8g",
-          price: "$10.99",
           tags: ["vegan"],
         },
       ],
@@ -146,7 +137,6 @@ const MENU_DATA = {
           calories: 480,
           protein: "42g",
           fat: "14g",
-          price: "$14.99",
           tags: ["high-protein", "gluten-free"],
         },
         {
@@ -160,7 +150,6 @@ const MENU_DATA = {
           calories: 520,
           protein: "38g",
           fat: "22g",
-          price: "$16.99",
           tags: ["high-protein", "omega-3"],
         },
         {
@@ -174,7 +163,6 @@ const MENU_DATA = {
           calories: 440,
           protein: "35g",
           fat: "12g",
-          price: "$13.99",
           tags: ["high-protein"],
         },
         {
@@ -188,7 +176,6 @@ const MENU_DATA = {
           calories: 410,
           protein: "28g",
           fat: "10g",
-          price: "$11.99",
           tags: ["vegetarian", "high-protein"],
         },
       ],
@@ -210,7 +197,6 @@ const MENU_DATA = {
           calories: 280,
           protein: "16g",
           fat: "8g",
-          price: "$9.99",
           tags: ["vegan", "gluten-free"],
         },
         {
@@ -224,7 +210,6 @@ const MENU_DATA = {
           calories: 350,
           protein: "18g",
           fat: "9g",
-          price: "$12.49",
           tags: ["vegetarian"],
         },
         {
@@ -238,7 +223,6 @@ const MENU_DATA = {
           calories: 240,
           protein: "6g",
           fat: "10g",
-          price: "$8.99",
           tags: ["vegetarian", "gluten-free"],
         },
         {
@@ -252,7 +236,6 @@ const MENU_DATA = {
           calories: 380,
           protein: "30g",
           fat: "10g",
-          price: "$13.49",
           tags: ["gluten-free", "high-protein"],
         },
       ],
@@ -274,7 +257,6 @@ const MENU_DATA = {
           calories: 140,
           protein: "4g",
           fat: "1g",
-          price: "$7.99",
           tags: ["vegan", "detox"],
         },
         {
@@ -288,7 +270,6 @@ const MENU_DATA = {
           calories: 210,
           protein: "6g",
           fat: "3g",
-          price: "$8.49",
           tags: ["vegan"],
         },
         {
@@ -302,7 +283,6 @@ const MENU_DATA = {
           calories: 190,
           protein: "3g",
           fat: "4g",
-          price: "$8.49",
           tags: ["vegan"],
         },
         {
@@ -316,7 +296,6 @@ const MENU_DATA = {
           calories: 320,
           protein: "22g",
           fat: "10g",
-          price: "$9.99",
           tags: ["high-protein", "vegetarian"],
         },
       ],
@@ -338,7 +317,6 @@ const MENU_DATA = {
           calories: 220,
           protein: "7g",
           fat: "9g",
-          price: "$6.99",
           tags: ["vegan", "gluten-free"],
         },
         {
@@ -352,7 +330,6 @@ const MENU_DATA = {
           calories: 280,
           protein: "4g",
           fat: "18g",
-          price: "$7.49",
           tags: ["vegan", "gluten-free"],
         },
         {
@@ -365,7 +342,6 @@ const MENU_DATA = {
           calories: 195,
           protein: "4g",
           fat: "6g",
-          price: "$5.99",
           tags: ["vegan", "gluten-free"],
         },
         {
@@ -379,7 +355,6 @@ const MENU_DATA = {
           calories: 160,
           protein: "5g",
           fat: "7g",
-          price: "$5.49",
           tags: ["vegan", "snack"],
         },
       ],

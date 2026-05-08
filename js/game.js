@@ -1,8 +1,3 @@
-/* =============================================
-   NutriSite — game.js
-   Arcade: Catch the healthy food!
-   ============================================= */
-
 "use strict";
 
 (function () {
@@ -35,7 +30,6 @@
 
   initState();
 
-  // ── Controls ──
   const keys = { left: false, right: false };
 
   document.addEventListener("keydown", (e) => {
@@ -47,7 +41,6 @@
     if (e.key === "ArrowRight") keys.right = false;
   });
 
-  // Mobile buttons
   const btnLeft = document.getElementById("btnLeft");
   const btnRight = document.getElementById("btnRight");
   if (btnLeft && btnRight) {
@@ -67,7 +60,6 @@
     });
   }
 
-  // ── Spawn item ──
   function spawnItem() {
     const isHealthy = Math.random() > 0.32;
     items.push({
@@ -83,7 +75,6 @@
 
   let spawnTimer = 0;
 
-  // ── Game loop ──
   function loop() {
     if (!running) return;
     animId = requestAnimationFrame(loop);
@@ -92,17 +83,14 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
 
-    // Move basket
     const bspeed = 7;
     if (keys.left) basket.x = Math.max(0, basket.x - bspeed);
     if (keys.right)
       basket.x = Math.min(canvas.width - basket.w, basket.x + bspeed);
 
-    // Spawn rate increases with level
     const spawnRate = Math.max(30, 70 - level * 5);
     if (spawnTimer % spawnRate === 0) spawnItem();
 
-    // Update items
     for (let i = items.length - 1; i >= 0; i--) {
       const it = items[i];
       it.y += it.speed;
@@ -111,7 +99,6 @@
       ctx.textAlign = "center";
       ctx.fillText(it.emoji, it.x + ITEM_SIZE / 2, it.y + ITEM_SIZE);
 
-      // Collision with basket
       if (
         it.y + ITEM_SIZE >= basket.y &&
         it.y <= basket.y + basket.h &&
@@ -134,7 +121,6 @@
         continue;
       }
 
-      // Missed healthy item
       if (it.y > canvas.height) {
         if (it.healthy) {
           lives--;
@@ -149,7 +135,6 @@
       }
     }
 
-    // Level up
     if (score > 0 && score % 150 === 0 && Math.floor(score / 150) >= level) {
       level++;
       speed += 0.4;
@@ -160,7 +145,6 @@
     drawEffects();
   }
 
-  // ── Drawing ──
   const effects = [];
 
   function showEffect(x, y, text, color) {
@@ -190,7 +174,6 @@
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Ground line
     ctx.strokeStyle = "rgba(74,124,89,0.2)";
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -201,10 +184,8 @@
 
   function drawBasket() {
     ctx.save();
-    // Shadow
     ctx.shadowColor = "rgba(0,0,0,0.15)";
     ctx.shadowBlur = 8;
-    // Basket body
     const grad = ctx.createLinearGradient(
       basket.x,
       basket.y,
@@ -217,7 +198,6 @@
     ctx.beginPath();
     ctx.roundRect(basket.x, basket.y, basket.w, basket.h, 6);
     ctx.fill();
-    // Shine
     ctx.shadowBlur = 0;
     ctx.fillStyle = "rgba(255,255,255,0.25)";
     ctx.beginPath();
@@ -226,7 +206,6 @@
     ctx.restore();
   }
 
-  // ── HUD ──
   function updateHud() {
     document.getElementById("gameScore").textContent = score;
     document.getElementById("gameLives").textContent = "❤️".repeat(
@@ -235,7 +214,6 @@
     document.getElementById("gameLevel").textContent = level;
   }
 
-  // ── Start / End ──
   window.startGame = function () {
     cancelAnimationFrame(animId);
     initState();
@@ -254,7 +232,6 @@
     document.getElementById("finalScore").textContent = score;
     document.getElementById("gameOver").classList.remove("hidden");
 
-    // Draw final frame
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
     ctx.save();
@@ -270,7 +247,6 @@
     ctx.restore();
   }
 
-  // Draw idle screen
   drawBackground();
   ctx.font = '28px "Playfair Display", serif';
   ctx.fillStyle = "#4a7c59";
