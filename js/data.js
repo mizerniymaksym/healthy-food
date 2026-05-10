@@ -361,3 +361,48 @@ const MENU_DATA = {
     },
   ],
 };
+const SECRET_MENU_DATA = {
+  id: "secrets",
+  name: "🤫 Secret Menu",
+  description: "Exclusive recipes unlocked by top players!",
+  image: "🤫",
+  items: [
+    {
+      id: "sec1",
+      name: "Golden Turmeric Elixir",
+      description: "A magical healing drink to restore strength.",
+      recipe:
+        "1. Heat the almond milk. 2. Add turmeric, cinnamon, a pinch of black pepper and honey. 3. Whisk until foamy.",
+      image: "/images/golden-turemic.jpg",
+      calories: 120,
+      protein: "2g",
+      fat: "5g",
+      tags: ["secret", "vegan", "detox"],
+    },
+    {
+      id: "sec2",
+      name: "Pitaya Power Bowl",
+      description: "Exotic Dragon Fruit Bowl for Super Energy.",
+      recipe:
+        "1. Blend frozen pitaya (dragon fruit), banana and coconut water in a blender. 2. Garnish with chia seeds, kiwi and coconut flakes.",
+      image: "/images/pitaya-power.jpg",
+      calories: 280,
+      protein: "5g",
+      fat: "8g",
+      tags: ["secret", "vegan", "high-energy"],
+    },
+    {
+      id: "sec3",
+      name: "Ninja Protein Pancakes",
+      description:
+        "Green pancakes with spinach and matcha for invisible weight gain.",
+      recipe:
+        "1. Mix oatmeal, a handful of spinach, a spoonful of matcha, banana and plant-based milk. 2. Fry in a non-stick pan. 3. Serve with berries.",
+      image: "/images/ninja-protein.jpg",
+      calories: 350,
+      protein: "18g",
+      fat: "6g",
+      tags: ["secret", "high-protein"],
+    },
+  ],
+};

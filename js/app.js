@@ -262,6 +262,43 @@ function closeModal() {
   document.body.style.overflow = "";
 }
 
+window.secretsUnlocked = false;
+
+window.unlockSecrets = function () {
+  if (window.secretsUnlocked) return;
+  window.secretsUnlocked = true;
+
+  MENU_DATA.categories.push(SECRET_MENU_DATA);
+
+  const secretItems = SECRET_MENU_DATA.items.map((item) => ({
+    ...item,
+    categoryId: SECRET_MENU_DATA.id,
+    categoryName: SECRET_MENU_DATA.name,
+  }));
+  allItems = [...allItems, ...secretItems];
+
+  buildCategoryTabs(MENU_DATA.categories);
+
+  document.getElementById("modalContent").innerHTML = `
+    <div style="text-align: center; padding: 20px;">
+      <div style="font-size: 4rem; margin-bottom: 10px;">🏆</div>
+      <h2 style="font-family: 'Playfair Display', serif; color: var(--green-primary); margin-bottom: 15px;">Секрет Розблоковано!</h2>
+      <p style="color: var(--text-mid); margin-bottom: 25px; line-height: 1.6;">
+        Вітаємо! Ваша спритність у грі відкрила доступ до <strong>ексклюзивних секретних рецептів</strong>!
+      </p>
+      <button class="btn-primary" onclick="
+        closeModal();
+        document.getElementById('menu').scrollIntoView({behavior: 'smooth'});
+        setTimeout(() => document.querySelector('.cat-tab[data-cat=\\'secrets\\']').click(), 400);
+      ">
+        Переглянути рецепти
+      </button>
+    </div>
+  `;
+  document.getElementById("modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+};
+
 function initGreeting() {
   function greet(inputId) {
     const name = document.getElementById(inputId).value.trim();
