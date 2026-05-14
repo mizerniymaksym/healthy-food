@@ -3,23 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="icon" type="image/png" href="images/logo-header.png?v=1" />
-
     <title>GreenRoot</title>
-
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <nav id="navbar">
       <a href="#" class="logo">
         <span class="logo-icon">
-          <img src="images/logo-header.png" alt="Leafuel Logo" />
+          <img src="images/logo-header.png" alt="GreenRoot Logo" />
         </span>
         GreenRoot
       </a>
@@ -38,18 +34,13 @@
       </ul>
 
       <div class="nav-user">
-        <input type="text" id="userName" placeholder="Your name..." />
-        <button id="greetBtn">👋 Greet</button>
+        <button id="openRegBtn" class="btn-primary" style="padding: 8px 20px;">Sign Up</button>
       </div>
     </nav>
 
     <div id="greetBanner" class="greet-banner hidden">
       <span id="greetText"></span>
-      <button
-        onclick="document.getElementById('greetBanner').classList.add('hidden')"
-      >
-        ×
-      </button>
+      <button onclick="document.getElementById('greetBanner').classList.add('hidden')">×</button>
     </div>
 
     <section id="hero">
@@ -61,8 +52,7 @@
         <h1 class="hero-title">Eat Healthy And<br /><em>Natural Food</em></h1>
         <p class="hero-desc">
           Discover fresh, organic, and nutritionally balanced meals crafted by
-          certified nutritionists. Your path to a healthier lifestyle starts
-          here.
+          certified nutritionists. Your path to a healthier lifestyle starts here.
         </p>
         <a href="#menu" class="btn-primary">Discover Food →</a>
       </div>
@@ -70,17 +60,12 @@
       <div class="hero-visual">
         <div class="hero-circle"></div>
         <div class="hero-plate">🥗</div>
-
         <div id="heroReviews"></div>
       </div>
     </section>
 
     <div class="search-section">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Search dishes, ingredients, categories..."
-      />
+      <input type="text" id="searchInput" placeholder="🔍 Search dishes, ingredients, categories..." />
       <div id="searchResults" class="search-results hidden"></div>
     </div>
 
@@ -89,13 +74,10 @@
         <p class="section-label">Our Menu</p>
         <h2 class="section-title">Fresh Healthy <em>Delicious Foods</em></h2>
         <p class="section-sub">
-          Browse our full catalog of organic meals — filter by category and find
-          your perfect dish.
+          Browse our full catalog of organic meals — filter by category and find your perfect dish.
         </p>
       </div>
-
       <div class="cat-tabs" id="catTabs"></div>
-
       <div class="menu-grid" id="menuGrid">
         <div class="loading-spinner">Loading menu…</div>
       </div>
@@ -116,40 +98,28 @@
             <span class="ing-num">01</span>
             <div class="ing-text">
               <h4>Fresh Leafy Greens</h4>
-              <p>
-                Spinach, kale, and arugula packed with vitamins A, C, and K to
-                support immunity and bone health.
-              </p>
+              <p>Spinach, kale, and arugula packed with vitamins A, C, and K to support immunity and bone health.</p>
             </div>
           </div>
           <div class="ing-item reveal">
             <span class="ing-num">02</span>
             <div class="ing-text">
               <h4>Whole Grains &amp; Seeds</h4>
-              <p>
-                Quinoa, chia seeds, and oats providing sustained energy and
-                essential omega-3 fatty acids.
-              </p>
+              <p>Quinoa, chia seeds, and oats providing sustained energy and essential omega-3 fatty acids.</p>
             </div>
           </div>
           <div class="ing-item reveal">
             <span class="ing-num">03</span>
             <div class="ing-text">
               <h4>Lean Protein Sources</h4>
-              <p>
-                Grilled chicken, legumes, and salmon to build muscle and support
-                healthy metabolism.
-              </p>
+              <p>Grilled chicken, legumes, and salmon to build muscle and support healthy metabolism.</p>
             </div>
           </div>
           <div class="ing-item reveal">
             <span class="ing-num">04</span>
             <div class="ing-text">
               <h4>Colorful Vegetables</h4>
-              <p>
-                Bell peppers, tomatoes, and carrots rich in antioxidants and
-                natural phytonutrients.
-              </p>
+              <p>Bell peppers, tomatoes, and carrots rich in antioxidants and natural phytonutrients.</p>
             </div>
           </div>
         </div>
@@ -168,26 +138,19 @@
       <div class="benefits-header reveal">
         <p class="section-label">Why Choose Us</p>
         <h2 class="section-title">Benefits of <em>Nutrition</em></h2>
-        <p class="section-sub">
-          Discover how balanced eating transforms your daily energy and
-          wellbeing.
-        </p>
+        <p class="section-sub">Discover how balanced eating transforms your daily energy and wellbeing.</p>
       </div>
       <div class="benefits-grid">
         <div class="benefits-col">
           <div class="benefit-card reveal">
             <div class="benefit-icon">🛡️</div>
             <h4>Immune Boost</h4>
-            <p>
-              Vitamin-rich meals to strengthen your natural defenses every day.
-            </p>
+            <p>Vitamin-rich meals to strengthen your natural defenses every day.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">⚡</div>
             <h4>More Energy</h4>
-            <p>
-              Complex carbs and clean proteins for all-day sustained vitality.
-            </p>
+            <p>Complex carbs and clean proteins for all-day sustained vitality.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">♾️</div>
@@ -202,23 +165,17 @@
           <div class="benefit-card reveal">
             <div class="benefit-icon">🧠</div>
             <h4>Mental Clarity</h4>
-            <p>
-              Omega-3s and B-vitamins that sharpen focus and reduce brain fog.
-            </p>
+            <p>Omega-3s and B-vitamins that sharpen focus and reduce brain fog.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">😊</div>
             <h4>Better Mood</h4>
-            <p>
-              Gut-healthy ingredients that balance serotonin and reduce stress.
-            </p>
+            <p>Gut-healthy ingredients that balance serotonin and reduce stress.</p>
           </div>
           <div class="benefit-card reveal">
             <div class="benefit-icon">⚖️</div>
             <h4>Weight Balance</h4>
-            <p>
-              Nutrient-dense, portion-perfect meals that satisfy without excess.
-            </p>
+            <p>Nutrient-dense, portion-perfect meals that satisfy without excess.</p>
           </div>
         </div>
       </div>
@@ -227,48 +184,52 @@
     <section id="nutritionist">
       <div class="nutri-content">
         <p class="section-label reveal">Expert Support</p>
-        <h2 class="section-title reveal">
-          Your Personal<br /><em>Nutritionist</em>
-        </h2>
-        <p class="section-sub reveal">
-          Our certified nutritionists craft personalized plans tailored to your
-          goals, lifestyle, and preferences.
-        </p>
-        <ul class="nutri-checklist">
-          <li class="reveal">
-            <span class="check-icon">✓</span> Personalized weekly meal plans
-          </li>
-          <li class="reveal">
-            <span class="check-icon">✓</span> Calorie &amp; macro tracking
-            support
-          </li>
-          <li class="reveal">
-            <span class="check-icon">✓</span> One-on-one video consultations
-          </li>
-          <li class="reveal">
-            <span class="check-icon">✓</span> Recipes adapted to allergies &amp;
-            preferences
-          </li>
-          <li class="reveal">
-            <span class="check-icon">✓</span> Progress reviews every two weeks
-          </li>
-        </ul>
-        <a href="#" class="btn-primary">Get Started →</a>
+
+        <!-- STATE A: guest (Get Started ТУТ) -->
+        <div id="nutriGuest">
+          <h2 class="section-title reveal">Your Personal<br /><em>Nutritionist</em></h2>
+          <p class="section-sub reveal">
+            Our certified nutritionists craft personalized plans tailored to your goals, lifestyle, and preferences.
+          </p>
+          <ul class="nutri-checklist">
+            <li class="reveal"><span class="check-icon">✓</span> Personalized weekly meal plans</li>
+            <li class="reveal"><span class="check-icon">✓</span> Calorie &amp; macro tracking support</li>
+            <li class="reveal"><span class="check-icon">✓</span> One-on-one video consultations</li>
+            <li class="reveal"><span class="check-icon">✓</span> Recipes adapted to allergies &amp; preferences</li>
+            <li class="reveal"><span class="check-icon">✓</span> Progress reviews every two weeks</li>
+          </ul>
+          <button id="mainRegBtn" class="btn-primary">Get Started →</button>
+        </div>
+
+        <!-- STATE B: registered (Change Goal ТЕПЕР ТУТ) -->
+        <div id="nutriPersonal" class="hidden">
+          <h2 class="section-title">
+            <em id="userNameDisplay">Your</em> Personal Plan
+          </h2>
+          <p id="personalAdvice" class="section-sub" style="font-weight:600; color:var(--green-primary); margin-bottom:20px;"></p>
+          <div id="recommendedDishes" style="display:grid; gap:14px; margin-bottom:24px;"></div>
+          
+          <button id="resetUserBtn" class="btn-primary"
+                  style="background:transparent; color:var(--green-primary); border:2px solid var(--green-primary); box-shadow:none;">
+            ✏️ Change Goal
+          </button>
+        </div>
       </div>
+
       <div class="nutri-visual reveal">
         <div class="nutri-circle"></div>
         <div class="nutri-bowl">🥘</div>
         <div class="nutri-stats">
           <div>
-            <div class="stat-val">250</div>
+            <div class="stat-val" id="statCalories">250</div>
             <div class="stat-lbl">Calories</div>
           </div>
           <div>
-            <div class="stat-val">24g</div>
+            <div class="stat-val" id="statProtein">24g</div>
             <div class="stat-lbl">Protein</div>
           </div>
           <div>
-            <div class="stat-val">14g</div>
+            <div class="stat-val" id="statFat">14g</div>
             <div class="stat-lbl">Fat</div>
           </div>
         </div>
@@ -280,8 +241,7 @@
         <p class="section-label">Mini Game</p>
         <h2 class="section-title">🎮 Catch the <em>Healthy Food!</em></h2>
         <p class="section-sub">
-          Catch falling healthy food — avoid junk! Use ← → arrow keys or tap the
-          buttons on mobile.
+          Catch falling healthy food — avoid junk! Use ← → arrow keys or tap the buttons on mobile.
         </p>
       </div>
       <div class="game-wrapper reveal">
@@ -293,9 +253,7 @@
         <canvas id="gameCanvas" width="600" height="380"></canvas>
         <div class="game-controls">
           <button class="game-btn" id="btnLeft">◀</button>
-          <button class="game-btn" id="btnStart" onclick="startGame()">
-            ▶ Start
-          </button>
+          <button class="game-btn" id="btnStart" onclick="startGame()">▶ Start</button>
           <button class="game-btn" id="btnRight">▶</button>
         </div>
         <div id="gameOver" class="game-over hidden">
@@ -311,21 +269,14 @@
         <p class="section-label">Your Feedback</p>
         <h2 class="section-title">Leave a <em>Comment</em></h2>
       </div>
-
       <div class="review-form-wrapper reveal">
         <input type="text" id="reviewName" placeholder="Your Name" />
-
         <div class="avatar-selector">
           <label>Choose Avatar:</label>
           <button class="avatar-btn active" data-avatar="👨">👨</button>
           <button class="avatar-btn" data-avatar="👩">👩</button>
         </div>
-
-        <textarea
-          id="reviewText"
-          placeholder="Write your review here..."
-        ></textarea>
-
+        <textarea id="reviewText" placeholder="Write your review here..."></textarea>
         <div class="rating-selector">
           <label>Rating:</label>
           <div class="stars-input" id="starRating">
@@ -336,12 +287,7 @@
             <span data-val="5">★</span>
           </div>
         </div>
-
-        <button
-          id="submitReviewBtn"
-          class="btn-primary"
-          style="width: 100%; justify-content: center"
-        >
+        <button id="submitReviewBtn" class="btn-primary" style="width:100%; justify-content:center;">
           Submit Review
         </button>
       </div>
@@ -350,19 +296,14 @@
     <footer>
       <div class="footer-inner">
         <div class="footer-col">
-          <div class="logo" style="margin-bottom: 12px">
+          <div class="logo" style="margin-bottom:12px">
             <span class="logo-icon">
-              <img
-                src="images/logo-header.png"
-                alt="GreenRoot Logo"
-                style="width: 100%; height: 100%; object-fit: contain"
-              />
+              <img src="images/logo-header.png" alt="GreenRoot Logo" style="width:100%; height:100%; object-fit:contain;" />
             </span>
             GreenRoot
           </div>
           <p class="footer-about">
-            A team web project on healthy nutrition, built with vanilla HTML,
-            CSS &amp; JavaScript.
+            A team web project on healthy nutrition, built with vanilla HTML, CSS &amp; JavaScript.
           </p>
         </div>
         <div class="footer-col">
@@ -372,6 +313,7 @@
             <li><a href="#menu">Menu</a></li>
             <li><a href="#ingredients">Ingredients</a></li>
             <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#nutritionist">Nutritionist</a></li>
             <li><a href="#game">Game</a></li>
           </ul>
         </div>
@@ -386,12 +328,7 @@
           <h4>Stay in Touch</h4>
           <div class="footer-socials">
             <a href="#" class="social-btn" title="Facebook">📘</a>
-            <a
-              href="https://www.instagram.com/slimservicestore/"
-              class="social-btn"
-              title="Instagram"
-              >📸</a
-            >
+            <a href="https://www.instagram.com/slimservicestore/" class="social-btn" title="Instagram">📸</a>
             <a href="#" class="social-btn" title="Twitter">🐦</a>
           </div>
           <div class="footer-greet">
@@ -413,8 +350,42 @@
       </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <div id="regModal" class="modal hidden">
+      <div class="modal-overlay" id="regModalOverlay"></div>
+      <div class="modal-box">
+        <button class="modal-close" id="closeRegModal">×</button>
+        <h3 class="modal-title">Join GreenRoot 🌱</h3>
+        <p class="modal-desc">Fill in your details to get a personalized nutrition plan</p>
+        <div style="display:grid; gap:14px; margin-top:10px;">
+          <div>
+            <label style="font-size:0.85rem; font-weight:600; color:#555; display:block; margin-bottom:5px;">Your Name</label>
+            <input type="text" id="regName" placeholder="e.g. Alex"
+                   style="width:100%; padding:11px 14px; border-radius:10px; border:1.5px solid #dde8d0; font-size:1rem; box-sizing:border-box; outline:none;">
+          </div>
+          <div>
+            <label style="font-size:0.85rem; font-weight:600; color:#555; display:block; margin-bottom:5px;">Your Weight (kg)</label>
+            <input type="number" id="regWeight" placeholder="e.g. 70" min="30" max="250"
+                   style="width:100%; padding:11px 14px; border-radius:10px; border:1.5px solid #dde8d0; font-size:1rem; box-sizing:border-box; outline:none;">
+          </div>
+          <div>
+            <label style="font-size:0.85rem; font-weight:600; color:#555; display:block; margin-bottom:5px;">Your Goal</label>
+            <select id="regGoal"
+                    style="width:100%; padding:11px 14px; border-radius:10px; border:1.5px solid #dde8d0; font-size:1rem; background:white; box-sizing:border-box; outline:none;">
+              <option value="gain">🏋️ Gain Muscle / Mass</option>
+              <option value="lose">🥗 Lose Weight</option>
+              <option value="balance">🏃 Maintain &amp; Balance</option>
+            </select>
+          </div>
+          <p id="regError" style="color:#e05c5c; font-size:0.85rem; margin:0; display:none;">⚠️ Please fill in all fields.</p>
+          <button id="regSubmitBtn" class="btn-primary" style="justify-content:center;">
+            Get My Plan →
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/game.js"></script>
   </body>
 </html>
