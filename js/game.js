@@ -108,7 +108,7 @@
         if (it.healthy) {
           score += 10 * level;
           showEffect(it.x, it.y, "+" + 10 * level, "#4a7c59");
-          if (score >= 800 && !window.secretsUnlocked) {
+          if (score >= 400 && !window.secretsUnlocked) {
             if (typeof window.unlockSecrets === "function") {
               window.unlockSecrets();
               keys.left = false;
