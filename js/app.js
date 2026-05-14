@@ -1,17 +1,14 @@
 "use strict";
 
-// ── Simulated AJAX fetch ──
 function fetchMenuData() {
   return new Promise((resolve) => {
     setTimeout(() => resolve(MENU_DATA), 400);
   });
 }
 
-// ── State ──
 let allItems = [];
 let activeCategory = "all";
 
-// ── Init ──
 document.addEventListener("DOMContentLoaded", async () => {
   initScrollReveal();
   initNavbar();
@@ -28,14 +25,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       '<p class="error">Failed to load menu. Please try again later.</p>';
   }
 
-  // Restore session if user already registered
   const savedUser = localStorage.getItem("greenRootUser");
   if (savedUser) {
     updateNutritionistSection(JSON.parse(savedUser));
   }
+
+  updateReviewInputVisibility();
 });
 
-// ── Build full catalog from JSON ──
 function buildCatalog(data) {
   allItems = data.categories.flatMap((cat) =>
     cat.items.map((item) => ({
@@ -49,7 +46,6 @@ function buildCatalog(data) {
   initSearch();
 }
 
-// ── Category tabs ──
 function buildCategoryTabs(categories) {
   const tabs = document.getElementById("catTabs");
   tabs.innerHTML = "";
@@ -73,7 +69,9 @@ function buildCategoryTabs(categories) {
 
 function filterByCategory(catId, clickedBtn) {
   activeCategory = catId;
-  document.querySelectorAll(".cat-tab").forEach((b) => b.classList.remove("active"));
+  document
+    .querySelectorAll(".cat-tab")
+    .forEach((b) => b.classList.remove("active"));
   clickedBtn.classList.add("active");
   const filtered =
     catId === "all" ? allItems : allItems.filter((i) => i.categoryId === catId);
@@ -84,27 +82,40 @@ function filterByCategory(catId, clickedBtn) {
 function renderItems(items) {
   const grid = document.getElementById("menuGrid");
   if (!items.length) {
-    grid.innerHTML = '<p class="no-results">No dishes found. Try a different search.</p>';
+    grid.innerHTML =
+      '<p class="no-results">No dishes found. Try a different search.</p>';
     return;
   }
-  grid.innerHTML = items.map((item) => `
+  grid.innerHTML = items
+    .map(
+      (item) => `
     <div class="dish-card" onclick="openModal('${item.id}')">
-      <div class="dish-icon${isImagePath(item.image) ? " dish-icon--photo" : ""}">
-        ${isImagePath(item.image) ? `<img src="${item.image}" alt="${item.name}">` : item.image}
+      <div class="dish-icon${
+        isImagePath(item.image) ? " dish-icon--photo" : ""
+      }">
+        ${
+          isImagePath(item.image)
+            ? `<img src="${item.image}" alt="${item.name}">`
+            : item.image
+        }
       </div>
       <div class="dish-info">
         <div class="dish-cat">${item.categoryName}</div>
         <h3 class="dish-name">${item.name}</h3>
         <p class="dish-desc">${item.description}</p>
         <div class="dish-meta" style="justify-content: center; margin-bottom: 15px;">
-          <span class="dish-cal" style="font-weight: 600; color: var(--green-primary); font-size: 0.9rem;">🔥 ${item.calories} kcal</span>
+          <span class="dish-cal" style="font-weight: 600; color: var(--green-primary); font-size: 0.9rem;">🔥 ${
+            item.calories
+          } kcal</span>
         </div>
         <div class="dish-tags" style="justify-content: center;">
           ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
         </div>
       </div>
     </div>
-  `).join("");
+  `
+    )
+    .join("");
 }
 
 // ── Search ──
@@ -135,13 +146,25 @@ function initSearch() {
     renderItems(matches);
 
     if (matches.length && query.length >= 2) {
-      resultsBox.innerHTML = matches.slice(0, 5).map((item) =>
-        `<div class="search-item" onclick="openModal('${item.id}')">
-           <span class="search-thumb">${isImagePath(item.image) ? `<img src="${item.image}" alt="${item.name}">` : item.image}</span>
-           <span><strong>${item.name}</strong> <small>${item.categoryName}</small></span>
-           <span class="search-price" style="color: var(--text-mid);">🔥 ${item.calories} kcal</span>
+      resultsBox.innerHTML = matches
+        .slice(0, 5)
+        .map(
+          (item) =>
+            `<div class="search-item" onclick="openModal('${item.id}')">
+           <span class="search-thumb">${
+             isImagePath(item.image)
+               ? `<img src="${item.image}" alt="${item.name}">`
+               : item.image
+           }</span>
+           <span><strong>${item.name}</strong> <small>${
+              item.categoryName
+            }</small></span>
+           <span class="search-price" style="color: var(--text-mid);">🔥 ${
+             item.calories
+           } kcal</span>
          </div>`
-      ).join("");
+        )
+        .join("");
       resultsBox.classList.remove("hidden");
     } else {
       resultsBox.classList.add("hidden");
@@ -149,7 +172,8 @@ function initSearch() {
   });
 
   document.addEventListener("click", (e) => {
-    if (!e.target.closest(".search-section")) resultsBox.classList.add("hidden");
+    if (!e.target.closest(".search-section"))
+      resultsBox.classList.add("hidden");
   });
 }
 
@@ -157,7 +181,10 @@ function initSearch() {
 function isImagePath(src) {
   return (
     src &&
-    (src.includes("/") || src.endsWith(".jpg") || src.endsWith(".png") || src.endsWith(".webp"))
+    (src.includes("/") ||
+      src.endsWith(".jpg") ||
+      src.endsWith(".png") ||
+      src.endsWith(".webp"))
   );
 }
 
@@ -175,16 +202,28 @@ function openModal(itemId) {
       <div class="modal-flip-inner">
 
         <div class="modal-front">
-          <div class="modal-icon${isImagePath(item.image) ? " modal-icon--photo" : ""}">
-            ${isImagePath(item.image) ? `<img src="${item.image}" alt="${item.name}">` : item.image}
+          <div class="modal-icon${
+            isImagePath(item.image) ? " modal-icon--photo" : ""
+          }">
+            ${
+              isImagePath(item.image)
+                ? `<img src="${item.image}" alt="${item.name}">`
+                : item.image
+            }
           </div>
           <div class="modal-cat">${item.categoryName}</div>
           <h2 class="modal-title">${item.name}</h2>
           <p class="modal-desc">${item.description}</p>
           <div class="modal-macros">
-            <div class="macro"><span class="macro-val">🔥 ${item.calories}</span><span class="macro-lbl">Calories</span></div>
-            <div class="macro"><span class="macro-val">💪 ${item.protein}</span><span class="macro-lbl">Protein</span></div>
-            <div class="macro"><span class="macro-val">🥑 ${item.fat}</span><span class="macro-lbl">Fat</span></div>
+            <div class="macro"><span class="macro-val">🔥 ${
+              item.calories
+            }</span><span class="macro-lbl">Calories</span></div>
+            <div class="macro"><span class="macro-val">💪 ${
+              item.protein
+            }</span><span class="macro-lbl">Protein</span></div>
+            <div class="macro"><span class="macro-val">🥑 ${
+              item.fat
+            }</span><span class="macro-lbl">Fat</span></div>
           </div>
           <div class="dish-tags" style="margin-bottom:25px; justify-content: center;">
             ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
@@ -280,17 +319,17 @@ function initRegistration() {
   });
 
   const closeBtn = document.getElementById("closeRegModal");
-  const overlay  = document.getElementById("regModalOverlay");
+  const overlay = document.getElementById("regModalOverlay");
   if (closeBtn) closeBtn.addEventListener("click", closeRegModal);
-  if (overlay)  overlay.addEventListener("click", closeRegModal);
+  if (overlay) overlay.addEventListener("click", closeRegModal);
 
   const submitBtn = document.getElementById("regSubmitBtn");
   if (submitBtn) {
     submitBtn.addEventListener("click", () => {
-      const name   = document.getElementById("regName").value.trim();
+      const name = document.getElementById("regName").value.trim();
       const weight = document.getElementById("regWeight").value.trim();
-      const goal   = document.getElementById("regGoal").value;
-      const errEl  = document.getElementById("regError");
+      const goal = document.getElementById("regGoal").value;
+      const errEl = document.getElementById("regError");
 
       if (!name || !weight) {
         errEl.style.display = "block";
@@ -303,9 +342,11 @@ function initRegistration() {
 
       closeRegModal();
       updateNutritionistSection(userData);
-
+      updateReviewInputVisibility();
       setTimeout(() => {
-        document.getElementById("nutritionist").scrollIntoView({ behavior: "smooth" });
+        document
+          .getElementById("nutritionist")
+          .scrollIntoView({ behavior: "smooth" });
       }, 300);
     });
   }
@@ -313,15 +354,17 @@ function initRegistration() {
   const resetBtn = document.getElementById("resetUserBtn");
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
-      localStorage.removeItem("greenRootUser");
-      document.getElementById("nutriPersonal").classList.add("hidden");
-      document.getElementById("nutriGuest").classList.remove("hidden");
+      const savedUser = JSON.parse(localStorage.getItem("greenRootUser"));
+      if (savedUser) {
+        document.getElementById("regName").value = savedUser.name;
+        document.getElementById("regWeight").value = savedUser.weight;
+        document.getElementById("regGoal").value = savedUser.goal;
+      }
       openRegModal();
     });
   }
 }
 
-// ── Recommendations logic ──
 function getRecommendations(goal) {
   const items = MENU_DATA.categories.flatMap((cat) =>
     cat.items.map((item) => ({ ...item, categoryName: cat.name }))
@@ -345,20 +388,29 @@ function getRecommendations(goal) {
   return filtered.sort(() => 0.5 - Math.random()).slice(0, 3);
 }
 
-// ── Update Nutritionist Section after registration ──
 function updateNutritionistSection(user) {
   document.getElementById("nutriGuest").classList.add("hidden");
   document.getElementById("nutriPersonal").classList.remove("hidden");
 
   document.getElementById("userNameDisplay").textContent = user.name + "'s";
 
+  const navUser = document.querySelector(".nav-user");
+  if (navUser) {
+    navUser.innerHTML = `<span style="font-weight: 600; color: var(--green-primary); font-size: 0.95rem;">👋 Привіт, ${user.name}</span>`;
+  }
+
+  updateReviewInputVisibility();
+
   const goalLabels = {
-    gain:    "gaining muscle mass 🏋️",
-    lose:    "losing weight 🥗",
+    gain: "gaining muscle mass 🏋️",
+    lose: "losing weight 🥗",
     balance: "maintaining balance 🏃",
   };
-  document.getElementById("personalAdvice").textContent =
-    `${user.name}, based on your weight (${user.weight} kg), here are the best dishes for ${goalLabels[user.goal]}:`;
+  document.getElementById("personalAdvice").textContent = `${
+    user.name
+  }, based on your weight (${user.weight} kg), here are the best dishes for ${
+    goalLabels[user.goal]
+  }:`;
 
   const recommendations = getRecommendations(user.goal);
   const dishesEl = document.getElementById("recommendedDishes");
@@ -368,7 +420,9 @@ function updateNutritionistSection(user) {
     return;
   }
 
-  dishesEl.innerHTML = recommendations.map((item) => `
+  dishesEl.innerHTML = recommendations
+    .map(
+      (item) => `
     <div onclick="openModal('${item.id}')"
          style="display:flex; align-items:center; gap:14px; background:white; padding:14px 16px;
                 border-radius:14px; border-left:4px solid var(--green-primary);
@@ -377,31 +431,49 @@ function updateNutritionistSection(user) {
          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.1)'"
          onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
       <div style="font-size:2rem; min-width:44px; text-align:center;">
-        ${isImagePath(item.image)
-          ? `<img src="${item.image}" alt="${item.name}" style="width:44px;height:44px;border-radius:10px;object-fit:cover;">`
-          : item.image}
+        ${
+          isImagePath(item.image)
+            ? `<img src="${item.image}" alt="${item.name}" style="width:44px;height:44px;border-radius:10px;object-fit:cover;">`
+            : item.image
+        }
       </div>
       <div style="flex:1;">
-        <div style="font-weight:700; font-size:0.95rem; color:#2b3a2e;">${item.name}</div>
-        <div style="font-size:0.82rem; color:#777; margin-top:2px;">${item.categoryName}</div>
+        <div style="font-weight:700; font-size:0.95rem; color:#2b3a2e;">${
+          item.name
+        }</div>
+        <div style="font-size:0.82rem; color:#777; margin-top:2px;">${
+          item.categoryName
+        }</div>
       </div>
       <div style="text-align:right; white-space:nowrap;">
-        <div style="font-weight:700; color:var(--green-primary);">🔥 ${item.calories} kcal</div>
-        <div style="font-size:0.8rem; color:#888;">💪 ${item.protein} protein</div>
+        <div style="font-weight:700; color:var(--green-primary);">🔥 ${
+          item.calories
+        } kcal</div>
+        <div style="font-size:0.8rem; color:#888;">💪 ${
+          item.protein
+        } protein</div>
       </div>
     </div>
-  `).join("");
+  `
+    )
+    .join("");
 
-  const avgCal  = Math.round(recommendations.reduce((s, i) => s + i.calories, 0) / recommendations.length);
-  const avgProt = recommendations.reduce((s, i) => s + parseInt(i.protein), 0) / recommendations.length;
-  const avgFat  = recommendations.reduce((s, i) => s + parseInt(i.fat),     0) / recommendations.length;
+  const avgCal = Math.round(
+    recommendations.reduce((s, i) => s + i.calories, 0) / recommendations.length
+  );
+  const avgProt =
+    recommendations.reduce((s, i) => s + parseInt(i.protein), 0) /
+    recommendations.length;
+  const avgFat =
+    recommendations.reduce((s, i) => s + parseInt(i.fat), 0) /
+    recommendations.length;
 
   document.getElementById("statCalories").textContent = avgCal;
-  document.getElementById("statProtein").textContent  = Math.round(avgProt) + "g";
-  document.getElementById("statFat").textContent      = Math.round(avgFat)  + "g";
+  document.getElementById("statProtein").textContent =
+    Math.round(avgProt) + "g";
+  document.getElementById("statFat").textContent = Math.round(avgFat) + "g";
 }
 
-// ── Greeting (footer only) ──
 function initGreeting() {
   function greet(name) {
     if (!name) return;
@@ -418,16 +490,15 @@ function initGreeting() {
     setTimeout(() => banner.classList.add("hidden"), 5000);
   }
 
-  // Footer only
   document.getElementById("footerGreetBtn").addEventListener("click", () => {
     greet(document.getElementById("footerName").value.trim());
   });
   document.getElementById("footerName").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") greet(document.getElementById("footerName").value.trim());
+    if (e.key === "Enter")
+      greet(document.getElementById("footerName").value.trim());
   });
 }
 
-// ── Hamburger ──
 function initHamburger() {
   const btn = document.getElementById("hamburger");
   const links = document.getElementById("nav-links");
@@ -443,7 +514,6 @@ function initHamburger() {
   );
 }
 
-// ── Scroll Reveal ──
 function initScrollReveal() {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -457,10 +527,11 @@ function initScrollReveal() {
     { threshold: 0.12 }
   );
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-  document.querySelectorAll("#hero .reveal").forEach((el) => el.classList.add("visible"));
+  document
+    .querySelectorAll("#hero .reveal")
+    .forEach((el) => el.classList.add("visible"));
 }
 
-// ── Navbar active link on scroll ──
 function initNavbar() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -475,7 +546,6 @@ function initNavbar() {
   });
 }
 
-// ── Reviews ──
 let reviews = JSON.parse(localStorage.getItem("nutriReviews")) || [];
 let currentRating = 5;
 let currentAvatar = "👨";
@@ -493,9 +563,11 @@ function initReviews() {
 
   const starSpans = document.querySelectorAll("#starRating span");
   starSpans.forEach((span) => {
-    span.addEventListener("mouseover", (e) => highlightStars(parseInt(e.target.dataset.val)));
-    span.addEventListener("mouseout",  () => highlightStars(currentRating));
-    span.addEventListener("click",     (e) => {
+    span.addEventListener("mouseover", (e) =>
+      highlightStars(parseInt(e.target.dataset.val))
+    );
+    span.addEventListener("mouseout", () => highlightStars(currentRating));
+    span.addEventListener("click", (e) => {
       currentRating = parseInt(e.target.dataset.val);
       highlightStars(currentRating);
     });
@@ -507,8 +579,18 @@ function initReviews() {
     submitBtn.addEventListener("click", (e) => {
       e.preventDefault();
       const text = document.getElementById("reviewText").value.trim();
-      const name = document.getElementById("reviewName").value.trim() || "Guest";
-      if (!text) { alert("Please write a comment!"); return; }
+      let name = "Guest";
+      const savedUser = localStorage.getItem("greenRootUser");
+
+      if (savedUser) {
+        name = JSON.parse(savedUser).name;
+      } else {
+        name = document.getElementById("reviewName").value.trim() || "Guest";
+      }
+      if (!text) {
+        alert("Please write a comment!");
+        return;
+      }
       addReview({ name, text, rating: currentRating, avatar: currentAvatar });
       document.getElementById("reviewText").value = "";
       document.getElementById("reviewName").value = "";
@@ -523,7 +605,8 @@ function initReviews() {
 
 function highlightStars(rating) {
   document.querySelectorAll("#starRating span").forEach((span) => {
-    span.style.color = parseInt(span.dataset.val) <= rating ? "#f5a623" : "#ccc";
+    span.style.color =
+      parseInt(span.dataset.val) <= rating ? "#f5a623" : "#ccc";
   });
 }
 
@@ -564,4 +647,16 @@ function renderReviews() {
     `;
     container.appendChild(card);
   });
+}
+function updateReviewInputVisibility() {
+  const savedUser = localStorage.getItem("greenRootUser");
+  const nameInput = document.getElementById("reviewName");
+
+  if (nameInput) {
+    if (savedUser) {
+      nameInput.style.display = "none";
+    } else {
+      nameInput.style.display = "block";
+    }
+  }
 }
