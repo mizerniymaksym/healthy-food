@@ -78,7 +78,6 @@ function filterByCategory(catId, clickedBtn) {
   renderItems(filtered);
 }
 
-// ── Render cards ──
 function renderItems(items) {
   const grid = document.getElementById("menuGrid");
   if (!items.length) {
@@ -118,7 +117,6 @@ function renderItems(items) {
     .join("");
 }
 
-// ── Search ──
 function initSearch() {
   const input = document.getElementById("searchInput");
   const resultsBox = document.getElementById("searchResults");
@@ -177,7 +175,6 @@ function initSearch() {
   });
 }
 
-// ── Helper ──
 function isImagePath(src) {
   return (
     src &&
@@ -188,7 +185,6 @@ function isImagePath(src) {
   );
 }
 
-// ── Dish Modal (with flip) ──
 function openModal(itemId) {
   const item = allItems.find((i) => i.id === itemId);
   if (!item) return;
@@ -263,7 +259,6 @@ function closeModal() {
   document.body.style.overflow = "";
 }
 
-// ── Secret menu unlock (triggered from game) ──
 window.secretsUnlocked = false;
 
 window.unlockSecrets = function () {
@@ -301,7 +296,6 @@ window.unlockSecrets = function () {
   document.body.style.overflow = "hidden";
 };
 
-// ── Registration modal ──
 function openRegModal() {
   document.getElementById("regModal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
